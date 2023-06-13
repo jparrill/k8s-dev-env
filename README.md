@@ -19,3 +19,15 @@ make kind
 ```bash
 make prom
 ```
+
+- Deploy Hypershift (for agent provider)
+
+```bash
+make hypershift
+```
+
+This option can use a domain for certificate generation that hypershift will use to generate other HostedClusters
+
+```bash
+DOMAIN="adrogallop.io" make hypershift
+```

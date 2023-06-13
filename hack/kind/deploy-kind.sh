@@ -4,7 +4,7 @@ function validateBin() {
     fi
 
     BIN=${1}
-    which ${BIN}
+    which -s ${BIN}
     if [[ $? != 0 ]]; then
         echo "${BIN} not available in $PATH, please download the binary and put it in the PATH"
         exit 1
@@ -30,4 +30,5 @@ installKind
 validateBin kubectl
 deployCluster
 echo "Waiting for Cluster deployment to finish"
+sleep 30
 kubectl wait --for=condition=Ready pods --all --all-namespaces

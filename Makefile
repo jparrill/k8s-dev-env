@@ -1,7 +1,8 @@
 DIR := ${PWD}
 RUNTIME ?= docker
+DOMAIN ?= "test.com"
 
-all: kind prom
+all: kind prom hypershift
 
 .PHONY: kind
 kind:
@@ -10,3 +11,7 @@ kind:
 .PHONY: prom
 prom:
 	hack/prom/deploy-prom.sh
+
+.PHONY: hypershift
+hypershift:
+	hack/hypershift/deploy-hypershift.sh $(DOMAIN)
