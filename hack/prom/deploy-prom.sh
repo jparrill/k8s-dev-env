@@ -29,7 +29,9 @@ function deployProm() {
     echo "=================="
     echo
     echo "Please, press enter to deploy Prometheus, make sure the destination is right"
-    read
+    if [[ "${CHECK}" == "true" ]];then
+        read
+    fi
     ./developer-workspace/common/deploy-kube-prometheus.sh
     if [[ $? != 0 ]]; then
         echo "Error installing Prometheus. Exiting..."

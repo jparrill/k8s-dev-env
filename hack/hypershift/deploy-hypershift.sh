@@ -44,7 +44,9 @@ function deployHypershift() {
     kubectl config view --minify=true
 
     echo "Please, press enter to deploy hypershift, make sure the destination is right"
-    read
+    if [[ "${CHECK}" == "true" ]];then
+        read
+    fi
 
     HYPERFOLD=/tmp/hypershift/repo
     mkdir -p ${HYPERFOLD}
@@ -55,6 +57,7 @@ function deployHypershift() {
     make build
     ${HYPERFOLD}/bin/hypershift install --development
     sleep 5
+    createCert ${1}
     oc scale deployment/operator -n hypershift --replicas=1
     oc wait pod -n hypershift -l app=operator --for condition=Ready --timeout=120s
     cd ${SCRIPT_DIR}
@@ -69,7 +72,6 @@ if [[ "${1}" == "" ]];then
     exit 1
 fi
 
-deployHypershift
-createCert ${1}
+deployHypershift ${1}
 sleep 5
 kubectl wait --for=condition=Ready pods --all --all-namespaces

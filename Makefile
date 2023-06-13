@@ -1,6 +1,7 @@
 DIR := ${PWD}
 RUNTIME ?= docker
 DOMAIN ?= "test.com"
+CHECK ?= "true"
 
 all: kind prom hypershift
 
