@@ -1,0 +1,21 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  annotations:
+    operatorframework.io/managed-by: marketplace-operator
+    operatorframework.io/priorityclass: system-cluster-critical
+    target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+  name: redhat-marketplace
+  namespace: olm
+spec:
+  displayName: Red Hat Marketplace
+  icon:
+    base64data: ""
+    mediatype: ""
+  image: registry.redhat.io/redhat/redhat-marketplace-index:${CSVERSION}
+  priority: -300
+  publisher: Red Hat
+  sourceType: grpc
+  updateStrategy:
+    registryPoll:
+      interval: 10m0s

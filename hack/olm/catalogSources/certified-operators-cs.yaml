@@ -1,0 +1,21 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  annotations:
+    operatorframework.io/managed-by: marketplace-operator
+    operatorframework.io/priorityclass: system-cluster-critical
+    target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+  name: certified-operators
+  namespace: olm
+spec:
+  displayName: Certified Operators
+  icon:
+    base64data: ""
+    mediatype: ""
+  image: registry.redhat.io/redhat/certified-operator-index:${CSVERSION}
+  priority: -200
+  publisher: Red Hat
+  sourceType: grpc
+  updateStrategy:
+    registryPoll:
+      interval: 10m0s

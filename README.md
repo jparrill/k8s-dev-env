@@ -37,3 +37,9 @@ This other option will allow you to pass through all the checks that prvents an 
 ```bash
 CHECK="false" make hypershift
 ```
+
+- Deploy OLM, this is needed to deploy `agent-service-operator` and `hive-operator` in the nexts steps
+
+```bash
+make olm
+```

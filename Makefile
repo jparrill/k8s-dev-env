@@ -2,8 +2,10 @@ DIR := ${PWD}
 RUNTIME ?= docker
 DOMAIN ?= "test.com"
 CHECK ?= "true"
+OLM_VERSION ?= "v0.24.0"
+CS_VERSION ?= "v4.13"
 
-all: kind prom hypershift
+all: kind prom hypershift olm
 
 .PHONY: kind
 kind:
@@ -16,3 +18,7 @@ prom:
 .PHONY: hypershift
 hypershift:
 	hack/hypershift/deploy-hypershift.sh $(DOMAIN)
+
+.PHONY: olm
+olm:
+	hack/olm/deploy-olm.sh ${OLM_VERSION} ${CS_VERSION}
