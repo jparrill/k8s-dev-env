@@ -42,4 +42,16 @@ CHECK="false" make hypershift
 
 ```bash
 make olm
+
+OLM_VERSION="v0.24.0" make olm
+```
+
+If you want to enable private catalogSources from OCP you need to do this:
+
+```bash
+PULL_SECRET="<path to pull secret>" make olm
+
+or
+
+CS_VERSION="v4.12" PULL_SECRET="<path to pull secret>" make olm
 ```

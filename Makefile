@@ -4,6 +4,7 @@ DOMAIN ?= "test.com"
 CHECK ?= "true"
 OLM_VERSION ?= "v0.24.0"
 CS_VERSION ?= "v4.13"
+PULL_SECRET ?= ""
 
 all: kind prom hypershift olm
 
@@ -21,4 +22,4 @@ hypershift:
 
 .PHONY: olm
 olm:
-	hack/olm/deploy-olm.sh ${OLM_VERSION} ${CS_VERSION}
+	hack/olm/deploy-olm.sh $(OLM_VERSION) $(CS_VERSION) $(PULL_SECRET)
