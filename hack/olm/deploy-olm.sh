@@ -79,10 +79,11 @@ if [[ ${#@} -lt 1 || ${#@} -gt 3 ]]; then
         exit 1
     fi
 
+CSNS="olm"
 export OLMVERSION=${1}
 export CSVERSION=${2}
 export PULL_SECRET=${3}
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" && pwd )
 
-##deployOLM ${OLMVERSION}
+deployOLM ${OLMVERSION}
 deployCS ${CSVERSION} ${PULL_SECRET}

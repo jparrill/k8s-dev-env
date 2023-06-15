@@ -23,3 +23,7 @@ hypershift:
 .PHONY: olm
 olm:
 	hack/olm/deploy-olm.sh $(OLM_VERSION) $(CS_VERSION) $(PULL_SECRET)
+
+.PHONY: operators
+operators:
+	hack/olm/deploy-dep-ops.sh
