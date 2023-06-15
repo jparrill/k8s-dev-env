@@ -55,3 +55,9 @@ or
 
 CS_VERSION="v4.12" PULL_SECRET="<path to pull secret>" make olm
 ```
+
+- Deploy Hive and Assisted Installer operators
+
+```bash
+make operators
+```

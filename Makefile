@@ -6,7 +6,8 @@ OLM_VERSION ?= "v0.24.0"
 CS_VERSION ?= "v4.13"
 PULL_SECRET ?= ""
 
-all: kind prom hypershift olm
+base: kind prom hypershift olm
+all: base operators assisted
 
 .PHONY: kind
 kind:
@@ -27,3 +28,7 @@ olm:
 .PHONY: operators
 operators:
 	hack/olm/deploy-dep-ops.sh
+
+.PHONY: assisted
+assisted:
+	hack/agent/deploy-asc.sh

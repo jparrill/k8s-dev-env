@@ -87,3 +87,5 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" && pwd )
 
 deployOLM ${OLMVERSION}
 deployCS ${CSVERSION} ${PULL_SECRET}
+sleep 10
+kubectl wait --for=condition=Ready pods --all --all-namespaces

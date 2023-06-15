@@ -28,3 +28,5 @@ CSNS="olm"
 validateBin tasty
 deployHive
 deployAgent
+seelp 10
+kubectl wait --for=condition=Ready pods --all --all-namespaces
