@@ -6,7 +6,5 @@ networking:
 nodes:
 - role: control-plane
   extraMounts:
-  - hostPath: hack/kind/kind-pvc-hostpath.yaml
-    containerPath: /kind/manifests/default-storage.yaml
   - hostPath: /tmp/hostpath-provisioner
     containerPath: /tmp/hostpath-provisioner

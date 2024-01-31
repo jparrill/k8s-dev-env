@@ -25,9 +25,15 @@ function deployCluster() {
     kind create cluster --config ${SCRIPT_DIR}/config.yaml
 }
 
+function createHostpath() {
+    HOSTPATH=/tmp/hostpath-provisioner
+    mkdir -p ${HOSTPATH}
+}
+
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 installKind
 validateBin kubectl
+createHostpath
 deployCluster
 echo "Waiting for Cluster deployment to finish"
 sleep 30
